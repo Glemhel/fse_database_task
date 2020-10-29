@@ -1,21 +1,12 @@
 /*
 ======
-US-201. READ Check if the student has access to the given survey. 
-======
-
-Given student_id and survey_id, find it in can_papticipate_in
-*/
-
--- False
-SELECT EXISTS(SELECT * FROM participated WHERE survey_id=2 AND student_id=3);
-
-/*
-======
-US-101. READ Check if PTD has access to the given survey.
+US-101. Give to PTD only available courses, according to access level
+READ: Check if PTD has access to the given survey.
 ======
 
 Given the staff_id and survey_id, determine 
-whether he/she have access to this survey
+whether he/she have access to this survey throw courses table, which helps determine which staff has access to what.
+We use join in this queiry.
 */
 
 -- False
@@ -41,11 +32,12 @@ SELECT EXISTS(
 
 /*
 ======
-US-113. READ Set time frames for form, s.t. form will not be available for students after the deadline
+US-113. Set time frames for form, s.t. form will not be available for students after the deadline
+READ datetime to restrict access for the survey after the deadline.
 ======
 
 Given survey_id, check whether the current 
-date is available for this survey
+date is available for this survey (time is before deadline and after publication of the survey).
 
 */
 
@@ -58,7 +50,8 @@ SELECT EXISTS(SELECT FROM survey WHERE id=2 AND deadline > current_timestamp AND
 
 /*
 =======
-US-210. UPDATE 
+US-210.Choose suitable options, write a text, vote in scale questions
+UPDATE student's answer.
 ======
 
 update one of student’s options as they wish given answer_id
@@ -68,7 +61,7 @@ UPDATE answer SET data='bad' WHERE id=1;
 
 /*
 ======
-US-201. READ 
+US-201.Check if a student can access the poll or not
 ======
 
 Given studen_id, check if they already participated
@@ -79,7 +72,9 @@ SELECT survey_id FROM participated WHERE student_id=4;
 
 /*
 ==============
-US-121, US-211. DELETE
+US-121 Delete any submitted form from students.
+US-211 Submit or cancel the form.
+DELETE query.
 ==============
 
 cancel creation of a form, delete from answers by id.
@@ -89,7 +84,8 @@ DELETE FROM answer WHERE id=8;
 
 /*
 ======
-US-301. DELETE 
+US-301. Ability to delete questions, PTD account, submitted form manually 
+DELETE query.
 ======
 
 delete staff account by email.
@@ -101,20 +97,24 @@ DELETE FROM staff WHERE email='n.kudasov@innopolis.ru';
 
 /*
 ======
-US-130. READ 
+US-130.
+Give to PTD statistics for the survey or whole course
+READ query. 
 ======
 
-Give all the answers for the given survey_id
+Give all the answers for the given survey_id - select all questions with given survey_id.
 */
 
 SELECT * FROM answer WHERE question_id IN (SELECT number_in_survey FROM question WHERE survey_id=1) ORDER BY question_id;
 
 /*
 ======
-US-130. READ
+US-130.
+Give to PTD statistics for the survey or whole course
+READ query.
 ======
 
-Give all answers for the given course
+Give all answers for the given course - select it by course id, then join with answer and display all the data.
 */
 SELECT ans.id AS answer_id, ans.data, text as question_text, short_name as survey_short_name
 FROM answer AS ans
@@ -132,7 +132,9 @@ WHERE course_id=4
 
 /*
 =======
-US-110. CREATE 
+US-110. 
+Configure the poll from the scratch or from the template 
+CREATE query.
 =======
 
 Create new survey with data given
