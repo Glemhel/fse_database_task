@@ -1,3 +1,8 @@
+/*
+  ===========================
+  CREATING TABLES IN DATABASE
+  ===========================
+*/
 CREATE TABLE staff (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -64,6 +69,12 @@ CREATE TABLE tracks (
     FOREIGN KEY (course_id) REFERENCES course(id),
     track_name VARCHAR(255) NOT NULL
 );
+
+/*
+  ===========================
+  CREATING RELATIONS
+  ===========================
+*/
 
 CREATE TABLE participated (
     student_id INT NOT NULL,
