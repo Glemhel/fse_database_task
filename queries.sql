@@ -1,5 +1,16 @@
 /*
 ======
+US-201.Check if a student can access the poll or not
+READ: Check if student has access to the given survey according to his course.
+======
+
+Determine whether given survey was created for the course that student is enrolled in
+*/
+
+SELECT EXISTS(SELECT * from studies_at where student_id=1 and course_id=1);
+
+/*
+======
 US-101. Give to PTD only available courses, according to access level
 READ: Check if PTD has access to the given survey.
 ======
