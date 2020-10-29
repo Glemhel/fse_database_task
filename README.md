@@ -1,7 +1,8 @@
 Artifact 5: Relational database schema and SQL queries
 ===
-* **Group**: 02
-* **Prject**: classes feedback
+* **Group**: BS19-02
+* **Prject**: Classes Quality Feedback
+* **Authors** : Mikhail Rudakov, Lev Lymarenko, German Vechtomov, Polina Minina, Dmitrii Shabalin
 * **Database name**: psql
 
 
@@ -11,8 +12,8 @@ There are 2 ways you can check our queries:
 
 + Using online tools [Sqlfiddle](http://sqlfiddle.com/#!17/666ef/40)
 
-+ Localy on you mahine using docker
-+ Localy on you mahine
++ Locally on you machine using docker
++ Locally on you machine
 
 
 ---
@@ -53,5 +54,5 @@ There are 2 ways you can check our queries:
 
 # How to check queries?
 
-+ Just copy quiry from the `queries.sql` in psql
++ Just copy query from the `queries.sql` in psql
 
